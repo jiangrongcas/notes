@@ -26,6 +26,7 @@
 | 15 | 日期（ds）| ds（ds）| 无 |
 | 16 | | 订单商品id（context_id）| N/A |
 | 17 | | rankscore（score）| N/A |
+|
 
 
 ## 20180803
@@ -45,13 +46,25 @@ LIMIT 10
 Multiagent RL: 
 - The two agents have different objects and each one aims to maximize its own rewards considering the reaction of the other. 
 - There is not a global object.
-- `"Multiagent Reinforcement Learning: Theoretical Framework and an Algorithm"` designs an algorithms to find the Nash equilibrium for the two agents. Guarantee to converge.
+-  [1] designs an algorithms to find the Nash equilibrium for the two agents. Guarantee to converge.
 
 Proposal
-- Does the probabilities of scene transformations matter in the algorithm design? 
-    - First, use existing data to train a scene-transition-prob network with SL; Second, use RL the refine the probs. This network can be used to buid a model-based learning framework.
 - If we view *Platform* and *User* as two agents with different objectives, will the framework applicable? 
     - Hard to define the rewards of users.
-- match_type: hierarchical (multi-task) RL: 1) which algorithm type + 2) algorithm  parameters. 
+- Are the probabilities of scene transformations useful in the algorithm design? 
+    - First, use existing data to train a scene-transition-prob network with SL; Second, use RL to refine the probs. This network can be used to build a model-based learning framework.
+- match_type: hierarchical (multi-task) RL: 1) which algorithm type + 2) algorithm  parameters. Further, what's the difference between algorithms in different scenes and with different match types? Just different network architectures like [2]?
     - For example, cellphone -> match, dress -> similar
 - How to cooperate? Setting a global Q-value seems too simple, is it efficient?
+
+---
+**References**
+
+[1] Hu J, Wellman M P. Multiagent reinforcement learning: theoretical framework and an algorithm. (2018). ICML, 98: 242-250.
+
+[2] Feng, J., Li, H., Huang, M., Liu, S., Ou, W., Wang, Z., & Zhu, X. (2018). Learning to Collaborate : Multi-Scenario Ranking via Multi-Agent Reinforcement Learning *. WWW, 1939–1948.
+
+## 201808xx
+
+Proposal
+- Mix of L2R with DNN. The policy $\mu$ consists of a DNN and a network for the weight of the DNN.
