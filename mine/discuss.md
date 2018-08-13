@@ -64,7 +64,18 @@ Proposal
 
 [2] Feng, J., Li, H., Huang, M., Liu, S., Ou, W., Wang, Z., & Zhu, X. (2018). Learning to Collaborate : Multi-Scenario Ranking via Multi-Agent Reinforcement Learning *. WWW, 1939–1948.
 
-## 201808xx
+## 20180813
 
 Proposal
-- Mix of L2R with DNN. The policy $\mu$ consists of a DNN and a network for the weight of the DNN.
+- Is L2R a NN-based algorithm (value network or policy network)? 
+    - Mix of L2R with DNN. The policy $\mu$ consists of a DNN and a network for the weight of the DNN.
+- DRQN [1] outperforms 10-frame DQN in Flickering Pong. 
+    - How about 20 frames or more?
+    - DRQN's high-level idea is to use the sequence of observations (frames in the Flickering Pong) to approximate the state (location, direction, velocity). Why RNN is better than a vanilla sequence of observations? In [1], it calims that ``"DRQN makes better use of the limited history to achieve higher scores"``.
+    - When the games are MDPs rather than POMDPs, ``"there is no reason to expect DRQN to outperform DQN."``
+    - Our experiments suggest that Pong represents an outlier among the examined games. Across a set of ten ``Flickering MDPs (POMDPs)`` we observe ``no systematic improvement when employing recurrency``. Similarly, across ``non-flickering Atari games``, there are ``few significant differences`` between the recurrent and non-recurrent player. This observation leads us to conclude that while recurrency is a viable method for handling multiple state observations, it confers ``no systematic benefit compared to stacking the observations`` in the input layer of a convolutional network.
+
+---
+**References**
+
+[1] Hausknecht, M., & Stone, P. (2015). Deep Recurrent Q-Learning for Partially Observable MDPs, 29–37. https://doi.org/10.1.1.696.1421
